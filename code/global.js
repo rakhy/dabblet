@@ -95,7 +95,7 @@ var gist = {
 		options = options || {};
 		
 		var anonymous = options.anon || !window.user,
-		    creatingNew = anonymous || options.forceNew;;
+		    creatingNew = anonymous || options.forceNew;
 		
 		if(gist.id 
 		&& (!gist.user || !window.user || gist.user.id != user.id)
@@ -127,10 +127,10 @@ var gist = {
 		}
 		
 		files['settings.json'] = { "content": JSON.stringify(Dabblet.settings.current(null, 'file')) };
-				
+
 		gist.request({
 			anon: options.anon,
-			id: anonymous || options.forceNew? null : id,
+			id: creatingNew? null : id,
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json; charset=UTF-8'
