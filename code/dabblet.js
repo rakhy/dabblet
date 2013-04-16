@@ -312,10 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		a.target = '_blank';
 		a.title = 'Go to full page dabblet';
 	}
-	else {
-		a.onclick = Dabblet.wipe;
-		a.title = 'New dabblet';
-	}
 	
 	var path = location.pathname.slice(1);
 	

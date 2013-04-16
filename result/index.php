@@ -6,7 +6,7 @@
 preg_match('#\bgist\/([\da-f]+)#i', $_SERVER['REQUEST_URI'], $gist_id);
 $gist_id = $gist_id[1];
 
-//echo $gist_id; exit;
+echo 'id:' . $gist_id; exit;
 
 if($gist_id) {
 	preg_match('#\bgist\/[\da-f]+\/([\da-f]+)#i', $_SERVER['REQUEST_URI'], $gist_rev);

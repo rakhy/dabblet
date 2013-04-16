@@ -3,23 +3,28 @@
 <head>
 
 <meta charset="utf-8" />
-<title>dabblet.com</title>
+<title>WebPlatform Code</title>
 <meta name="author" content="Lea Verou" />
-<meta name="description" content="An interactive CSS playground and code sharing tool. Dabblet saves to Github gists and offers many conveniences for CSS editing." />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" href="/style/global.css" />
 <link rel="stylesheet" href="/style/style.css" />
 <script src="/code/prefixfree.min.js"></script>
 
-<script>window._gaq = [['_setAccount', 'UA-27750908-1'], ['_trackPageview']];</script>
-<script src="http://www.google-analytics.com/ga.js" async></script>
-
 </head>
 <body>
 
 <header>
-	<h1><a href="/">dabblet</a></h1>
+	<h1 class="with-dropdown">
+		<a href="/">WebPlatform.org Code</a>
+		
+		<menu class="dropdown">
+			<a href="http://docs.webplatform.org" class="command">Docs</a>
+			<a href="http://talk.webplatform.org/forums" class="command">Q&amp;A</a>
+			<a href="http://talk.webplatform.org/chat" class="command">Chat</a>
+			<a href="http://blog.webplatform.org" class="command">Blog</a>
+		</menu>
+	</h1>
 	
 	<div class="with-inactive-dropdown">
 		<a id="currentuser" target="_blank" class="user button">Log in</a>
@@ -71,13 +76,13 @@
 	<div class="with-dropdown" id="cloud">
 		<button id="save-button" class="with-symbol" title="Save">☁</button>
 		<menu class="dropdown">
-			<a href="/" onclick="Dabblet.wipe()" class="command" data-keyboard="⌘N">New dabblet</a>
+			<a href="/" onclick="Dabblet.wipe()" class="command" data-keyboard="⌘N">New codelet</a>
 						
 			<hr />
 			
 			<a id="save-cmd" tabindex="0" class="command" data-keyboard="⌘S" data-disabled>Save</a>
 			<a onclick="gist.save({forceNew: true})" id="save-new-cmd" class="command" tabindex="0" data-disabled>Save as new</a>
-			<a onclick="gist.save({anon: true})" class="command" tabindex="0">Save anonymously</a>
+			<!--<a onclick="gist.save({anon: true})" class="command" tabindex="0">Save anonymously</a>-->
 			
 			<hr />
 			
@@ -111,7 +116,7 @@
 			
 			<input type="radio" name="page" value="javascript" id="page-javascript" data-scope="file" />
 			<label for="page-javascript" title="⌘4" class="tab">
-				<span class="title">JS<sub style="font-size: 50%; opacity: .6;">alpha</sub></span>
+				<span class="title">JS</span>
 			</label>
 			
 			<input type="radio" name="page" value="result" id="page-result" data-scope="file" />
@@ -122,16 +127,23 @@
 	</div>
 </header>
 
-<iframe class="page" id="result" name="result" src="http://preview.dabblet.com"></iframe>
+<iframe class="page" id="result" name="result" src="/result.html"></iframe>
 <section id="css-container" class="editor page"><pre id="css" spellcheck="false" class="language-css" contenteditable>/**
- * The first commented line is your dabblet’s title
+ * The first commented line is your codelet’s title
  */
 
-background: #f06;
-background: linear-gradient(45deg, #f06, yellow);
-min-height: 100%;</pre></section>
+p {
+	color: #f06;
+	font: italic 200% Georgia, serif;
+	transition: 1s cubic-bezier(.2,.6,.8,.8);
+	width: 400px;	
+}
 
-<section id="html-container" class="editor page"><pre id="html" spellcheck="false" class="language-html" contenteditable>&lt;!-- content to be placed inside &lt;body>…&lt;/body> --></pre></section>
+html:hover p {
+	transform: rotate(360deg);
+}</pre></section>
+
+<section id="html-container" class="editor page"><pre id="html" spellcheck="false" class="language-html" contenteditable>&lt;p>I &hearts; WebPlatform.org!&lt;/p></pre></section>
 
 <section id="javascript-container" class="editor page"><pre id="javascript" spellcheck="false" class="language-javascript" contenteditable>// alert('Hello world!');</pre></section>
 <button id="runjs" title="⌘↩" onclick="Dabblet.update.JavaScript()">Run</button>
