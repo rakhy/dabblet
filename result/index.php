@@ -3,6 +3,8 @@
 # error_reporting(E_ALL);
 # ini_set('display_errors', 1);
 
+require '../keys.php';
+
 preg_match('#\bgist\/([\da-f]+)#i', $_SERVER['REQUEST_URI'], $gist_id);
 $gist_id = $gist_id[1];
 
@@ -16,6 +18,8 @@ if($gist_id) {
 	if($gist_rev) {
 		$uri .= "/$gist_rev";
 	}
+	
+	$uri .= "?client_id=$client_id&client_secret=$client_secret";
 	
 	try {
 		$raw = file_get_contents($uri);
@@ -81,7 +85,7 @@ if (!$js) {
 	|| $settings['prefixfree']
 	|| $settings['settings']['prefixfree']
 	): ?>
-<script src="http://dabblet.com/code/prefixfree.min.js"></script>
+<script src="http://code.webplatform.org/code/prefixfree.min.js"></script>
 <? endif; ?>
 <? if ($js): ?>
 <script>
